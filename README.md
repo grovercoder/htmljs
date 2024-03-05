@@ -2,7 +2,7 @@
 
 This library provides a simple wrapper for creating HTML elements.  It is used where dynamic HTML needs to be generated at run time.
 
-The native `document.createElement(...)` methods are effective but lead to many reptitive lines of code.  This library allows for a more natural conversation in code.
+The native `document.createElement(...)` methods are effective but lead to many repetitive lines of code.  This library allows for a more concise but natural conversation in code.
 
 ```js
 // Native code
@@ -74,7 +74,7 @@ Some attributes like "class" are already special cases.  These are handled withi
 
 Where tags have content, that content can be set by specifying the "content" property of the options object.
 
-It should be noted the uderlying code is `tag.innerHTML = <content>`.  So strings and child nodes can be both be used.
+It should be noted the uderlying code is `tag.innerHTML = <content>`.  So a string or child node can be used.
 
 ```js
 const p1 = HTML.p({content: "Hello World"})
@@ -93,7 +93,7 @@ p1.innerText = "Hello World"
 
 CSS Classes can be assigned to a tag by setting a "class" property in the passed options object.
 
-The value of the "class" property can be a simple string, an space delimited list, or an array of strings.
+The value of the "class" property can be a simple string, a space delimited list, or an array of strings.
 
 ```js
 const p1 = HTML.p({class: 'myclass'})
@@ -104,7 +104,7 @@ const p3 = HTML.p({class: ['myclass', 'yourclass', 'all-classes']})
 
 # A more complete example
 
-Using this library to build a static HTML page can be done, but it would be faster to just create the HTML page.  Instead, this library is intended where the content to be displayed is not known at development time, but is expected to conform to a certain structure.
+This library is intended for when the content to be displayed is not known at development time, but is expected to conform to a certain structure.
 
 Consider where a list of comments may need to be generated for a page dynamically:
 
@@ -140,6 +140,7 @@ fetch('/get_comments?id=123')
     })
 
 ```
+> Disclaimer:  I have not verified this block of code works error free (yet)
 
 This code would handle zero, 300, or more comments - depending on what was returned from the `fetch`.  Validating the retrieved data should be done of course, but this example demonstrates the use of the library. 
 
