@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST Page</title>
+
+    <style>
+        p.title {
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Page</h1>
+    <p>This page is used to run a simple test. If successful, an HTML element should be created for each HTML Tag with a content of "sample".</p>
+
+    <p>A successful test should see a list of all the tags, and no errors reported on the developer console.</p>
+
+    <div id="content"></div>
+
+
+    <script type="module">
+        import HTML from './html.js'
+        const content = document.getElementById('content')
+        
+        for (const tagname of Object.keys(HTML)) {
+            console.log(`Testing '${tagname}'`)
+            const title = HTML.p({class: `title title_${tagname}`, content: tagname})
+            const container = HTML.div({id:`wrapper_${tagname}`})
+            let sample_content = "sample"
+            if (tagname == 'script') { sample_content = "" }
+            const sample = HTML[tagname]({id:`element_${tagname}`, content: sample_content})
+            container.append(title, sample)
+            content.append(container)
+        }
+
+
+    </script>
+</body>
+</html>
